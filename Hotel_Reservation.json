@@ -1,0 +1,130 @@
+{
+  "name": "Hotel_Reservation",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Reservation",
+        "formDescription": "Please Choose your room :",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Your Name ",
+              "placeholder": "ex: John Doe",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Choose room",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "single room"
+                  },
+                  {
+                    "option": "deluxe"
+                  },
+                  {
+                    "option": "suite"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        0
+      ],
+      "id": "9366bb3e-ef01-4c0f-bd60-ff4cde37a78b",
+      "name": "On form submission",
+      "webhookId": "demo-hotel-reservation-webhook-001"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "DEMO_AIRTABLE_BASE_ID",
+          "mode": "list",
+          "cachedResultName": "Demo Hotel Reservations",
+          "cachedResultUrl": "https://airtable.com/appDEMOBASE123456"
+        },
+        "table": {
+          "__rl": true,
+          "value": "DEMO_AIRTABLE_TABLE_ID",
+          "mode": "list",
+          "cachedResultName": "Demo Reservations Table",
+          "cachedResultUrl": "https://airtable.com/appDEMOBASE123456/tblDEMOTABLE123"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json['Your Name '] }}",
+            "room": "={{ $json['Choose room'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "room",
+              "displayName": "room",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d2079df6-c549-4b49-a8f5-b08b0979ef5e",
+      "name": "Create a record"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Create a record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "tags": []
+}
