@@ -67,8 +67,8 @@ The workflow runs as a 1-to-1 sequential pipeline:
 ```mermaid
 graph TD
     Guest[Guest / User] -->|Fills in form| Form[n8n Form Trigger: Reservation]
-    Form -->|"Your Name", "Choose room"| Airtable[Airtable Node: Create Record]
-    Airtable -->|REST API / PAT| DB[(Airtable Base: sheet one / Table 1)]
+    Form -->|"Your Name and Choose room"| Airtable[Airtable Node: Create Record]
+    Airtable -->|REST API / PAT| DB[(Airtable Base: Sheet One / Table 1)]
 ```
 
 ### ASCII View
