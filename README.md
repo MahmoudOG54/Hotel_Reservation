@@ -256,7 +256,7 @@ An event-driven n8n workflow that streamlines hotel reservations. The system hos
 
 ### Deployment Steps
 
-1. Import `workflow.json` into your n8n workspace.
+1. Import `Hotel_Reservation.json` into your n8n workspace.
 2. Authenticate your Airtable account with a Personal Access Token.
 3. Select your target Airtable Base ID and Table ID in the Airtable node.
 4. Activate the workflow and share the generated Form URL with users.
